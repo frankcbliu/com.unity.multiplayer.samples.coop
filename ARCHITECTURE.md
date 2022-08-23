@@ -1,4 +1,4 @@
-# Architecture
+# Architecture 代码架构
 This document describes the high-level architecture of Boss Room.
 If you want to familiarize yourself with the code base, you are just in the right place!
 
