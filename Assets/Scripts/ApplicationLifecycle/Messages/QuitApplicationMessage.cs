@@ -1,8 +1,6 @@
 using System;
 
-namespace Unity.Multiplayer.Samples.BossRoom.ApplicationLifecycle.Messages
-{
-    public struct QuitApplicationMessage
-    {
-    }
+namespace Unity.Multiplayer.Samples.BossRoom.ApplicationLifecycle.Messages {
+  public struct QuitApplicationMessage {
+  }
 }
