@@ -1,3 +1,6 @@
+[网页地址](https://github.com/frankcbliu/com.unity.multiplayer.samples.coop/blob/main/ARCHITECTURE.md)
+便于用浏览器插件翻译
+
 # Architecture 代码架构
 This document describes the high-level architecture of Boss Room.
 If you want to familiarize yourself with the code base, you are just in the right place!
