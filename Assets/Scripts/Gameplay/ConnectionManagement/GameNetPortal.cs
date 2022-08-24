@@ -16,19 +16,19 @@ namespace Unity.Multiplayer.Samples.BossRoom
     public enum ConnectStatus
     {
         Undefined,
-        Success,                  //client successfully connected. This may also be a successful reconnect.
-        ServerFull,               //can't join, server is already at capacity.
-        LoggedInAgain,            //logged in on a separate client, causing this one to be kicked out.
-        UserRequestedDisconnect,  //Intentional Disconnect triggered by the user.
-        GenericDisconnect,        //server disconnected, but no specific reason given.
-        Reconnecting,             //client lost connection and is attempting to reconnect.
-        IncompatibleBuildType,    //client build type is incompatible with server.
-        HostEndedSession,         //host intentionally ended the session.
-        StartHostFailed,          // server failed to bind
-        StartClientFailed         // failed to connect to server and/or invalid network endpoint
+        Success,                  // 成功 client successfully connected. This may also be a successful reconnect.
+        ServerFull,               // 服务器已满 can't join, server is already at capacity.
+        LoggedInAgain,            // 重复登录 logged in on a separate client, causing this one to be kicked out.
+        UserRequestedDisconnect,  // 用户断开连接 Intentional Disconnect triggered by the user.
+        GenericDisconnect,        // 服务器断开连接，但没有给出原因 server disconnected, but no specific reason given.
+        Reconnecting,             // 客户端尝试重连 client lost connection and is attempting to reconnect.
+        IncompatibleBuildType,    // 客户端构建类型与服务端不兼容 client build type is incompatible with server.
+        HostEndedSession,         // 主机主动结束会话 host intentionally ended the session.
+        StartHostFailed,          // 启动服务器失败 server failed to bind
+        StartClientFailed         // 连接服务端失败 failed to connect to server and/or invalid network endpoint
     }
 
-    public struct ReconnectMessage
+    public struct ReconnectMessage // 重连信息
     {
         public int CurrentAttempt;
         public int MaxAttempt;
@@ -43,10 +43,10 @@ namespace Unity.Multiplayer.Samples.BossRoom
     [Serializable]
     public class ConnectionPayload
     {
-        public string playerId;
-        public int clientScene = -1;
-        public string playerName;
-        public bool isDebug;
+        public string playerId;  // 玩家 ID
+        public int clientScene = -1; // 客户端当前场景
+        public string playerName; // 玩家用户名
+        public bool isDebug; // 是否 Debug 模式
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         [SerializeField]
         NetworkManager m_NetworkManager;
 
-        public NetworkManager NetManager => m_NetworkManager;
+        public NetworkManager NetManager => m_NetworkManager;  // 相当于实现了 get 方法
 
         [SerializeField]
         AvatarRegistry m_AvatarRegistry;
@@ -90,7 +90,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <summary>
         /// How many connections we create a Unity relay allocation for
         /// </summary>
-        private const int k_MaxUnityRelayConnections = 8;
+        private const int k_MaxUnityRelayConnections = 8; // 最大的玩家数
 
         // Instance of GameNetPortal placed in scene. There should only be one at once
         public static GameNetPortal Instance;
@@ -99,9 +99,10 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         private LocalLobby m_LocalLobby;
         private LobbyServiceFacade m_LobbyServiceFacade;
-        private ProfileManager m_ProfileManager;
+        private ProfileManager
+        m_ProfileManager;
 
-        [Inject]
+        [Inject] // 外部注入属性
         private void InjectDependencies(LocalLobby localLobby, LobbyServiceFacade lobbyServiceFacade, ProfileManager profileManager)
         {
             m_LocalLobby = localLobby;

@@ -16,13 +16,15 @@ We attempted to combat this by using a compositional model for our client and se
  - If you start up the game as a dedicated server, the client components will disable themselves, leaving you with `{Server, Shared}` components.
  - If you start up as a client, you get the complementary set of `{Shared, Client}` components.
 
-This approach works, but requires some care: 
+This approach works, but requires some care:  (关注点)
  - If you have server and clients of a shared base class, you need to remember that the shared code will run twice on the host. 
  - You also need to take care about code executing in `Start` and `Awake`: if this code runs contemporaneously with the `NetworkManager`'s initialization, it may not know yet whether the player is a host or client.
  - We judged this extra complexity worth it, as it provides a clear road-map to supporting true dedicated servers. 
  - Client-server separation also allows not having god-classes where both client and server code are intermingled. This way, when reading server code, you do not have to mentally skip client code and vice versa. This helps making bigger classes more readable and maintainable. Please note that this pattern can be applied on a case by case basis. If your class never grows too big, having a single `NetworkBehaviour` is perfectly fine.
 
 ## Connection flow
+由 GameNetPortal 对 `GameNetPortal` 进行控制
+
 The Boss Room network connection flow is owned by the `GameNetPortal`:
  - The Host will invoke either `GameNetPortal.StartHost` or `StartUnityRelayHost` if Unity Relay is being used.
  - The client will invoke either `ClientGameNetPortal.StartClient` or `StartClientUnityRelayModeAsync`.
