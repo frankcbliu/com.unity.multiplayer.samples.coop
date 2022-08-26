@@ -7,8 +7,8 @@ using UnityEngine;
 namespace Unity.Multiplayer.Samples.BossRoom.Client {
   public class UIQuitPanel : MonoBehaviour {
     enum QuitMode {
-      ReturnToMenu,
-      QuitApplication
+      ReturnToMenu,   // 返回主菜单
+      QuitApplication // 退出应用
     }
 
     [SerializeField]

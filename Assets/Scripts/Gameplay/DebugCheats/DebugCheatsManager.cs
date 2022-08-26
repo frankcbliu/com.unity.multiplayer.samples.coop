@@ -16,6 +16,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Game.Cheats {
     GameObject m_DebugCheatsPanel;
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
+
     [SerializeField]
     [Tooltip("Enemy to spawn. Make sure this is included in the NetworkManager's list of prefabs!")]
     NetworkObject m_EnemyPrefab;
@@ -250,10 +251,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Game.Cheats {
     }
 
 #else
-        void Awake()
-        {
-            m_DebugCheatsPanel.SetActive(false);
-        }
+    void Awake() {
+      m_DebugCheatsPanel.SetActive(false);
+    }
 #endif
   }
 }

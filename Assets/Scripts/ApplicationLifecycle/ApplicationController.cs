@@ -89,12 +89,12 @@ namespace Unity.Multiplayer.Samples.BossRoom.Shared {
       subHandles.Add(quitGameSessionSub.Subscribe(LeaveSession));
       subHandles.Add(quitApplicationSub.Subscribe(QuitGame));
       m_Subscriptions = subHandles;
-
+      // 120帧
       Application.targetFrameRate = 120;
     }
 
     private void Start() {
-      SceneManager.LoadScene("MainMenu");
+      SceneManager.LoadScene("MainMenu"); // 首次启动，直接加载主菜单场景
     }
 
     private void OnDestroy() {
@@ -121,7 +121,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Shared {
 
     private bool OnWantToQuit() {
       var canQuit = string.IsNullOrEmpty(m_LocalLobby?.LobbyID);
-      if (!canQuit) {
+      if (!canQuit) { // 退出前处理
         StartCoroutine(LeaveBeforeQuit());
       }
       return canQuit;
@@ -138,6 +138,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Shared {
           gameNetPortal.RequestDisconnect();
         }
       }
+      // 退回主菜单
       SceneLoaderWrapper.Instance.LoadScene("MainMenu", useNetworkSceneManager: false);
     }
 
@@ -145,7 +146,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Shared {
 #if UNITY_EDITOR
       UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+      Application.Quit();
 #endif
     }
   }

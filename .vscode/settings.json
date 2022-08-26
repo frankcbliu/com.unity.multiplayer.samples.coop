@@ -80,6 +80,8 @@
     "**/Prefabs/":true,
     "LICENSE.md":true,
     "dotnet-tools/":true,
+    "**/GameData/": true,
+    "**/*.asmdef": true,
     // 可能有用
     "Packages/":true,
   }
