@@ -11,7 +11,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client {
     bool m_Restart;
 
     void Start() {
-      ClientMusicPlayer.Instance.PlayThemeMusic(m_Restart);
+      ClientMusicPlayer.Instance.PlayThemeMusic(m_Restart); // 播放背景音乐
     }
   }
 }
